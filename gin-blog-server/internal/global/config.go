@@ -8,13 +8,13 @@ import (
 	"github.com/spf13/viper"
 )
 
-
 type Config struct {
 	Server struct {
 		Mode          string // debug | release
 		Port          string
 		DbType        string // mysql | sqlite
 		DbAutoMigrate bool   // whether to automatically migrate database table structures
+		DbLogMode     string
 	}
 
 	Log struct {
@@ -91,7 +91,7 @@ func GetConfig() *Config {
 func ReadConfig(path string) *Config {
 	v := viper.New()
 	v.SetConfigFile(path)
-	v.AutomaticEnv()                       // 允许使用环境变量
+	v.AutomaticEnv()                                   // 允许使用环境变量
 	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_")) // SERVER_APPMODE => SERVER>APPMODE
 
 	if err := v.ReadConfig(); err != nil {
@@ -130,4 +130,3 @@ func (*Config) DbDSN() string {
 		return Conf.SQLite.Dsn
 	}
 }
-
