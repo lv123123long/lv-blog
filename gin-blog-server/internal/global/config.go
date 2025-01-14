@@ -71,7 +71,7 @@ type Config struct {
 		Zone          string // 存储区域
 		Bucket        string // 空间名称
 		AccessKey     string // secret key AK
-		SerretKey     string // secret key SK
+		SecretKey     string // secret key SK
 		UseHTTPS      bool   // whether use https
 		UseCdnDomains bool   // 上传是否使用CDS 上传加速
 	}
