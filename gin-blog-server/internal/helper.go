@@ -5,10 +5,12 @@ import (
 	"log"
 	"log/slog"
 	"lv-blog/internal/global"
+	"lv-blog/internal/model"
 	"os"
 	"time"
 
 	"github.com/glebarez/sqlite"
+	"github.com/redis/go-redis/v9"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -113,7 +115,7 @@ func InitDatabase(conf *global.Config) *gorm.DB {
 
 // 根据配置文件初始化 Redis
 func InitRedis(conf *global.Config) *redis.Client {
-	rdb := redis.NewClient(&redis.option{
+	rdb := redis.NewClient(&redis.Options{
 		Addr:     conf.Redis.Addr,
 		Password: conf.Redis.Password,
 		DB:       conf.Redis.DB,
