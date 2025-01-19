@@ -1,0 +1,24 @@
+{
+    // 编译器选项
+    "compilerOptions": {
+        // 基础目录
+        "baseUrl": ".",
+        // 目标语言
+        "target": "ESNext",
+        // 模块解析策略
+        "moduleResolution": "node",
+        // 严格模式
+        "strict": true,
+        // JSX 保留
+        "jsx": "preserve",
+        // 路径映射
+        "paths": {
+            // @/* 映射到 ./src/*
+            "@/*": ["./src/*"],
+            // ~/* 映射到 ./*
+            "~/*": ["./*"]
+        }
+    },
+    // 排除目录
+    "exclude": ["dist", "node_modules"]
+}
